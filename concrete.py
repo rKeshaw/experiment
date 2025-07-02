@@ -168,9 +168,12 @@ if st.button("Run Blending Optimization"):
                 st.subheader("Final Binder Content Result:")
                 st.write(f"Binder %: {binder_percent_user:.2f}")
                 st.write(f"AFT (micron): {AFT_microns:.2f}")
-                st.write(f"CA ratio: {ca_val:.4f} {'✅' if ca_ok else '❌'}")
-                st.write(f"CA/FA Ratio: {CA_FA_ratio:.4f} {'✅' if faca_ok else '❌'}")
-                st.write(f"Filler/Binder Ratio: {filler_ratio:.4f} {'✅' if filler_ok else '❌'}")
+                ca_status = "Satisfied" if ca_ok else "Not Satisfied"
+                st.write(f"CA ratio: {ca_val:.4f} ({ca_status})")
+                faca_status = "Satisfied" if faca_ok else "Not Satisfied"
+                st.write(f"CA/FA Ratio: {CA_FA_ratio:.4f} ({faca_status})")
+                filler_status = "Satisfied" if filler_ok else "Not Satisfied"
+                st.write(f"Filler/Binder Ratio: {filler_ratio:.4f} ({filler_status})")
 
             else:
                 st.error("Optimization failed.")
